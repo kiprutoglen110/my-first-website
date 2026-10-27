@@ -250,3 +250,18 @@ footer {
         display: flex;
     }
 }
+
+.project-btn {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 14px;
+    padding: 10px 16px;
+}
+
+.project-card .project-btn {
+    color: #080b14;
+}
+
+.project-card .project-btn:hover {
+    color: #080b14;
+}

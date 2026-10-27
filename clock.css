@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: #080b14;
+    color: #f1f5f9;
+    font-family: Arial, sans-serif;
+}
+
+.clock-card {
+    width: 100%;
+    max-width: 600px;
+    padding: 50px 25px;
+    text-align: center;
+    background: #101827;
+    border: 1px solid #164e63;
+    border-radius: 20px;
+    box-shadow: 0 0 35px #00e5ff20;
+}
+
+.label {
+    color: #00e5ff;
+    letter-spacing: 5px;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+#time {
+    color: #00e5ff;
+    font-size: clamp(45px, 10vw, 82px);
+    font-family: monospace;
+    text-shadow: 0 0 20px #00e5ff70;
+    font-variant-numeric: tabular-nums;
+}
+
+#period {
+    color: #a5b4fc;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.divider {
+    height: 1px;
+    background: #164e63;
+    margin: 30px 0;
+}
+
+#date {
+    color: #f1f5f9;
+    font-size: 19px;
+}
+
+#greeting {
+    color: #94a3b8;
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+@media (max-width: 400px) {
+    .clock-card {
+        padding: 35px 12px;
+    }
+
+    .label {
+        letter-spacing: 3px;
+        font-size: 11px;
+    }
+}
