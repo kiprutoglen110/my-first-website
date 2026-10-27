@@ -4,25 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Digital Clock</title>
+    <title>Neon Time Toolkit</title>
     <link rel="stylesheet" href="clock.css">
     <script src="clock.js" defer></script>
 </head>
 
 <body>
 
-    <main class="clock-card">
-        <p class="label">YOUR DIGITAL CLOCK</p>
+    <main class="app">
+        <section class="clock-card">
+            <p class="label">NEON TIME TOOLKIT</p>
+            <h1 id="time">00:00:00</h1>
+            <p id="period">AM</p>
+            <div class="divider"></div>
+            <p id="date">Loading date...</p>
+            <p id="greeting">Welcome!</p>
+        </section>
 
-        <h1 id="time">00:00:00</h1>
+        <section class="tool-card">
+            <h2>⏱ Stopwatch</h2>
+            <p class="timer-display" id="stopwatch">00:00.00</p>
 
-        <p id="period">AM</p>
+            <div class="controls">
+                <button id="start-stopwatch">Start</button>
+                <button id="reset-stopwatch" class="secondary">Reset</button>
+            </div>
+        </section>
 
-        <div class="divider"></div>
+        <section class="tool-card">
+            <h2>⌛ Countdown Timer</h2>
 
-        <p id="date">Loading date...</p>
+            <div class="time-inputs">
+                <label>
+                    Minutes
+                    <input type="number" id="minutes" min="0" max="999" value="1">
+                </label>
 
-        <p id="greeting">Welcome!</p>
+                <label>
+                    Seconds
+                    <input type="number" id="seconds" min="0" max="59" value="0">
+                </label>
+            </div>
+
+            <p class="timer-display" id="countdown">01:00</p>
+            <p id="timer-message" role="status">Ready to start!</p>
+
+            <div class="controls">
+                <button id="start-countdown">Start</button>
+                <button id="pause-countdown" class="secondary">Pause</button>
+                <button id="reset-countdown" class="secondary">Reset</button>
+            </div>
+        </section>
+
+        <footer>Built with HTML, CSS &amp; JavaScript</footer>
     </main>
 
 </body>
