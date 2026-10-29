@@ -4,123 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#080b18">
-    <title>Neon Dodge | Arcade</title>
+    <title>My Developer Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <main class="arcade">
-        <header class="topbar">
-            <a class="brand" href="#" aria-label="Neon Dodge home">
-                <span class="brand-icon">N</span>
-                <span>NEON<span class="cyan">DODGE</span></span>
-            </a>
-            <button id="sound-toggle" class="sound-toggle" type="button">
-                🔊 SOUND ON
-            </button>
-        </header>
 
-        <section class="hero">
-            <p class="eyebrow">✦ THE NEON ARCADE ✦</p>
-            <h1>NEON <span>DODGE</span></h1>
-            <p class="subtitle">One ship. Endless obstacles. How long can you survive?</p>
-        </section>
 
-        <section class="scoreboard" aria-label="Game statistics">
-            <div class="score-box">
-                <span>SCORE</span>
-                <strong id="score">0</strong>
-            </div>
-            <div class="score-box">
-                <span>LEVEL</span>
-                <strong id="level">1</strong>
-            </div>
-            <div class="score-box">
-                <span>BEST</span>
-                <strong id="best-score">0</strong>
-            </div>
-        </section>
+    <nav class="navbar">
+        <h2 class="logo">DEV<span>.</span></h2>
 
-        <section class="game-panel">
-            <div class="game-topline">
-                <span id="game-status"><span class="status-dot"></span> ARCADE READY</span>
-                <button id="pause-button" class="small-button" type="button" hidden>
-                    Ⅱ PAUSE
-                </button>
-            </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open navigation menu" aria-expanded="false"
+            aria-controls="nav-links">
+            ☰
+        </button>
 
-            <div class="canvas-wrap">
-                <canvas id="game" width="800" height="500" aria-label="Neon Dodge game area"></canvas>
+        <div class="nav-links" id="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+        </div>
+    </nav>
 
-                <div class="overlay" id="overlay">
-                    <div class="menu-card">
-                        <div class="menu-symbol" id="menu-symbol">✦</div>
-                        <p class="eyebrow" id="overlay-eyebrow">READY PLAYER ONE</p>
-                        <h2 id="overlay-title">ENTER THE <span>ARCADE</span></h2>
-                        <p id="overlay-message">
-                            Dodge the falling blocks, level up, and chase a new high score.
-                        </p>
 
-                        <div class="menu-actions">
-                            <button id="start-button" class="primary-button" type="button">
-                                ▶ START GAME
-                            </button>
-                            <button id="settings-button" class="secondary-button" type="button">
-                                ⚙ SETTINGS
-                            </button>
-                        </div>
 
-                        <div id="settings-panel" class="settings-panel" hidden>
-                            <div class="setting-row">
-                                <div>
-                                    <strong>Sound effects</strong>
-                                    <small>Level-ups and game events</small>
-                                </div>
-                                <label class="switch">
-                                    <input id="sfx-setting" type="checkbox" checked>
-                                    <span class="switch-track"></span>
-                                </label>
-                            </div>
-                            <div class="setting-row">
-                                <div>
-                                    <strong>Arcade ambience</strong>
-                                    <small>Soft synthesized background tones</small>
-                                </div>
-                                <label class="switch">
-                                    <input id="music-setting" type="checkbox">
-                                    <span class="switch-track"></span>
-                                </label>
-                            </div>
-                            <button id="settings-back" class="secondary-button" type="button">
-                                ← BACK
-                            </button>
-                        </div>
+    <section id="home" class="hero">
+        <div class="profile-glow">
+            <img src="profile.jpg" alt="My profile photo" class="profile-photo">
+        </div>
 
-                        <p class="menu-hint" id="menu-hint">
-                            MOVE WITH ← → OR A / D
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <p class="tag">WELCOME TO MY WORLD</p>
 
-            <div class="touch-controls">
-                <button id="left-button" type="button" aria-label="Move left">◀ LEFT</button>
-                <button id="right-button" type="button" aria-label="Move right">RIGHT ▶</button>
-            </div>
+        <h1>Hi, I'm <span>Glen Kipruto</span></h1>
 
-            <p class="instructions">
-                <kbd>←</kbd> <kbd>→</kbd> or <kbd>A</kbd> <kbd>D</kbd> move
-                <span>•</span> <kbd>P</kbd> pause
-            </p>
-        </section>
+        <h2>Aspiring Web Developer</h2>
 
-        <footer>
-            <span>NEON DODGE ARCADE</span>
-            <span>BUILT TO BEAT YOUR BEST <span class="cyan">✦</span></span>
-        </footer>
-    </main>
+        <p class="intro">
+            I build creative digital experiences while learning
+            HTML, CSS and JavaScript.
+        </p>
+
+        <a href="#projects" class="btn">Explore My Work ↗</a>
+    </section>
+
+
+    <section id="about" class="section">
+        <h2>About <span>Me</span></h2>
+        <p>
+            I'm learning to build websites from scratch.
+            This is the beginning of my coding journey.
+        </p>
+    </section>
+
+
+    <section id="projects" class="section">
+        <h2>My <span>Projects</span></h2>
+
+        <div class="project-card">
+            <h3>My Developer Portfolio</h3>
+            <p>A futuristic portfolio built with HTML, CSS and JavaScript.</p>
+            <a class="btn project-btn" href="#home">View Portfolio</a>
+        </div>
+
+        <div class="project-card">
+            <h3>Neon Digital Clock</h3>
+            <p>A live digital clock showing the time, date and greeting.</p>
+            <a class="btn project-btn" href="clock.html">Launch Clock ↗</a>
+        </div>
+
+        <div class="project-card">
+            <h3>More Coming Soon</h3>
+            <p>I'm building new projects as I learn web development.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Built with curiosity and code.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
