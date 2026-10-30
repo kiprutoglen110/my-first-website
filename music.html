@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeonWave | Music Player</title>
+    <link rel="stylesheet" href="music.css">
+    <script src="music.js" defer></script>
+</head>
+
+<body>
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <main class="player">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-icon">♫</span>
+                <span>NEON<span class="cyan">WAVE</span></span>
+            </div>
+            <span class="status"><span></span> MUSIC PLAYER</span>
+        </header>
+
+        <section class="content">
+            <div class="artwork" id="artwork">
+                <div class="art-orbit orbit-one"></div>
+                <div class="art-orbit orbit-two"></div>
+                <div class="vinyl">
+                    <div class="vinyl-center">♫</div>
+                </div>
+                <div class="equalizer" id="equalizer">
+                    <i></i><i></i><i></i><i></i><i></i>
+                    <i></i><i></i><i></i><i></i><i></i>
+                </div>
+            </div>
+
+            <p class="eyebrow">NOW PLAYING</p>
+            <h1 id="song-title">Choose your music</h1>
+            <p class="artist" id="song-artist">Your personal soundtrack</p>
+
+            <audio id="audio"></audio>
+
+            <div class="progress-section">
+                <input type="range" id="progress" min="0" max="100" value="0" aria-label="Song progress">
+                <div class="time-row">
+                    <span id="current-time">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="shuffle" class="small-control" title="Shuffle">⤨</button>
+                <button id="previous" class="control" title="Previous song">|◀</button>
+                <button id="play" class="play-button" title="Play">▶</button>
+                <button id="next" class="control" title="Next song">▶|</button>
+                <button id="repeat" class="small-control" title="Repeat">↻</button>
+            </div>
+
+            <div class="volume-row">
+                <span>🔈</span>
+                <input type="range" id="volume" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
+                <span>🔊</span>
+            </div>
+
+            <div class="library">
+                <nav class="library-tabs" aria-label="Music library">
+                    <button class="library-tab active" data-view="all">
+                        All Songs
+                    </button>
+                    <button class="library-tab" data-view="favorites">
+                        ♥ Favorites
+                    </button>
+                    <button class="library-tab" data-view="playlists">
+                        Playlists
+                    </button>
+                </nav>
+
+                <div id="playlist-panel">
+                    <div class="playlist-heading">
+                        <h2 id="library-title">YOUR LIBRARY</h2>
+                        <button id="add-music">+ ADD MUSIC</button>
+                        <input type="file" id="file-picker" accept="audio/*,.mp3,.wav,.ogg,.m4a,.aac,.flac" multiple
+                            hidden>
+                    </div>
+
+                    <div id="custom-playlists"></div>
+
+                    <div id="playlist" class="playlist">
+                        <p class="empty-message">
+                            Add your music to start your library.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="footer">YOUR SOUND. YOUR UNIVERSE.</p>
+        </section>
+    </main>
+
+    <dialog id="create-playlist-dialog" class="music-dialog">
+        <form id="create-playlist-form">
+            <h2>Create a playlist</h2>
+            <label for="new-playlist-name">Playlist name</label>
+            <input id="new-playlist-name" maxlength="50" placeholder="e.g. My Chill Mix" required>
+            <div class="dialog-actions">
+                <button type="button" id="cancel-playlist">Cancel</button>
+                <button type="submit" class="dialog-primary">Create</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="add-to-playlist-dialog" class="music-dialog">
+        <form id="add-to-playlist-form">
+            <h2>Add to playlist</h2>
+            <p id="selected-song-name"></p>
+            <label for="target-playlist">Choose a playlist</label>
+            <select id="target-playlist" required></select>
+            <div class="dialog-actions">
+                <button type="button" id="cancel-add">Cancel</button>
+                <button type="submit" class="dialog-primary">Add song</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+
+</html>
