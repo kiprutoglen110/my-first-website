@@ -26,7 +26,7 @@ function updateClock() {
 
     document.getElementById("greeting").textContent =
         hour < 12 ? "Good morning!" :
-        hour < 18 ? "Good afternoon!" : "Good evening!";
+            hour < 18 ? "Good afternoon!" : "Good evening!";
 }
 
 updateClock();
@@ -62,7 +62,7 @@ function renderStopwatch() {
         `${String(centiseconds).padStart(2, "0")}`;
 }
 
-stopwatchButton.addEventListener("click", function() {
+stopwatchButton.addEventListener("click", function () {
     if (!stopwatchRunning) {
         stopwatchStart = Date.now();
         stopwatchRunning = true;
@@ -78,7 +78,7 @@ stopwatchButton.addEventListener("click", function() {
     }
 });
 
-document.getElementById("reset-stopwatch").addEventListener("click", function() {
+document.getElementById("reset-stopwatch").addEventListener("click", function () {
     stopwatchRunning = false;
     clearInterval(stopwatchInterval);
     stopwatchElapsed = 0;
@@ -135,8 +135,46 @@ function stopCountdown() {
     clearInterval(countdownInterval);
     countdownInterval = null;
     countdownRunning = false;
+
     countdownStartButton.disabled = false;
+    countdownStartButton.textContent = "Start";
+
     countdownPauseButton.disabled = true;
+}
+// ALARM SOUND
+let audioContext = null;
+
+function prepareAudio() {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+
+    if (!audioContext) {
+        audioContext = new AudioContext();
+    }
+
+    if (audioContext.state === "suspended") {
+        audioContext.resume();
+    }
+}
+
+function playAlarm() {
+    if (!audioContext || audioContext.state !== "running") return;
+
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+
+    oscillator.type = "sine";
+    oscillator.frequency.value = 880;
+
+    gain.gain.value = 0.3;
+
+    oscillator.start();
+
+    setTimeout(() => {
+        oscillator.stop();
+    }, 1500);
 }
 
 function tickCountdown() {
@@ -150,12 +188,13 @@ function tickCountdown() {
     if (remainingSeconds <= 0) {
         stopCountdown();
         countdownMessage.textContent = "Time is up! 🎉";
-        countdownStartButton.textContent = "Start again";
+        playAlarm();
     }
 }
 
 function startCountdown() {
     if (countdownRunning) return;
+    prepareAudio();
 
     if (!readCountdownInputs()) return;
 
@@ -176,7 +215,7 @@ function startCountdown() {
 
 countdownStartButton.addEventListener("click", startCountdown);
 
-countdownPauseButton.addEventListener("click", function() {
+countdownPauseButton.addEventListener("click", function () {
     if (!countdownRunning) return;
 
     remainingSeconds = Math.max(
@@ -194,7 +233,7 @@ countdownPauseButton.addEventListener("click", function() {
         remainingSeconds === 0 ? "Start again" : "Resume";
 });
 
-document.getElementById("reset-countdown").addEventListener("click", function() {
+document.getElementById("reset-countdown").addEventListener("click", function () {
     stopCountdown();
     remainingSeconds = 60;
     minutesInput.value = 1;
